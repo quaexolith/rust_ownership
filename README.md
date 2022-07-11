@@ -16,3 +16,19 @@ A scope is the range within a program for which an item is valid.
     // do stuff with s
 }                       // this scope is now over, and s is no longer valid
 ```
+
+## The String Type
+
+### Immutable
+```
+let s = String::from("hello");
+```
+
+### Mutable
+```
+let mut s = String::from("hello");
+
+s.push_str(", world!");
+
+println!("{}", s);
+```
