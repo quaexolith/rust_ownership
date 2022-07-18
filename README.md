@@ -53,3 +53,31 @@ The second part is different. In some languages, a garbage collector is used. In
 There should only ever be one `allocate` to one `free`.
 
 In Rust, memory is automatically returned once the variable that owns it goes out of scope. Rust calls a special function called `drop` which is where the author of `String` can put the code to return the memory. Rust calls `drop` automatically at the closing curly bracket.
+
+## Ways Variables and Data Interact: Move
+Multiple variables can interact with the same data in different ways in Rust.
+
+### Assigning the Integer Value of `x` to `y`
+```
+let x = 5;
+let y = x;
+```
+
+Because integers are simple values with a known, fixed size, and these two `5` values are pushed onto the stack.
+
+### Assigning the String Value of `s1` to `s2`
+```
+let s1 = String::from("hello");
+let s2 = s1;
+```
+
+This looks similar to the `integer` example but what happens in memory is different.
+
+A `String` is made up of 3 parts:
+* A pointer to the memory that holds the contents of the string
+* a length; how much memory, in bytes, the `String` is currently using
+* a capacity; how much memory, in bytes, the `String` has received from the allocator
+
+This group of data is stored on the stack. The actual contents of the string are stored on the heap.
+
+When `s1` is assigned to `s2`, the `String` data is copied, meaning the values stored on the stack. The actual contents are not copied on the heap.
