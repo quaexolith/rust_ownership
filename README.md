@@ -81,3 +81,5 @@ A `String` is made up of 3 parts:
 This group of data is stored on the stack. The actual contents of the string are stored on the heap.
 
 When `s1` is assigned to `s2`, the `String` data is copied, meaning the values stored on the stack. The actual contents are not copied on the heap.
+
+In order to avoid a **double free** error (freeing memory twice), when `s1` is assigned to `s2`, Rust invalidates `s1`. `s1` is no longer valid and using it causes an error. `borrow of moved value: s1`.
