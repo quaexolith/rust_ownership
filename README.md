@@ -1,6 +1,11 @@
 # Ownership in Rust
 *Ownership* is a set of rules that governs how a Rust program manages memory.
 
+## The Stack and the Heap
+Values that are known at compile time can be placed on the stack.
+
+Values that are known at runtime must be placed on the heap. This is referred to as **allocating**. The memory allocator searches the heap for a space big enough to store the data and returns a pointer to it. The pointer may be stored on the stack but to retrieve the actual data, the pointer must be followed.
+
 ## Ownership Rules
 * Each value in Rust has an owner
 * There can only be one owner at a time
