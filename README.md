@@ -85,3 +85,15 @@ When `s1` is assigned to `s2`, the `String` data is copied, meaning the values s
 In order to avoid a **double free** error (freeing memory twice), when `s1` is assigned to `s2`, Rust invalidates `s1`. `s1` is no longer valid and using it causes an error. `borrow of moved value: s1`.
 
 Since Rust copies the data on the stack and invalidates the first variable, the operation is referred to as a **move** rather than a **shallow copy**. There is a design choice implied by this: Rust will never automatically create "deep" copies of your data.
+
+## Ways Variables and Data Interact: Clone
+When a deep copy of the heap data is required, the `clone` method can be used.
+
+```
+let s1 = String::from("hello");
+let s2 = s1.clone();
+
+println!("s1 = {}, s2 = {}", s1, s2);
+```
+
+A call to `clone` indicates that some arbitrary code is being executed and that code may be expensive.
