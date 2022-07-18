@@ -97,3 +97,6 @@ println!("s1 = {}, s2 = {}", s1, s2);
 ```
 
 A call to `clone` indicates that some arbitrary code is being executed and that code may be expensive.
+
+## Stack-Only Data: Copy
+Types such as integers that have a known size at compile time are stored entirely on the stack, so copies of the actual values are quick to make. So when a stack-only variable is moved, there's no reason to invalidate the initial reference. In this case, there's no difference between a deep and shallow copy.
